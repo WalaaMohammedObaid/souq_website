@@ -1,0 +1,8 @@
+﻿{
+  "Extends": "defaults@9.0.0",
+  "RootNamespace": "AdminPanel",
+  "UpgradeInfo": {
+    "InitialType": "Community",
+    "InitialVersion": "10.3.7.0"
+  }
+}

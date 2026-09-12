@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "souq\\souq.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "AdminPanel\\AdminPanel.Web\\AdminPanel.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

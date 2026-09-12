@@ -1,0 +1,18 @@
+﻿@model Product
+
+ <div class="col-lg-4 col-md-6 portfolio-item isotope-item _@(Model.Cat?.Id)">
+
+                            <a href="@Model.Photo">
+                                <img src="@Model.Photo" class="img-fluid">
+                            </a>
+
+                            <h4>@Model.Name</h4>
+                            <p>@Model.Description</p>
+                            <div>
+
+                                <a asp-controller="Products" asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Id">Edit</a> |
+                                <a asp-controller="Products" asp-action="Details" class="btn btn-secondary" asp-route-id="@Model.Id">Details</a> |
+                                <a asp-controller="Products" asp-action="Delete" class="btn btn-danger" asp-route-id="@Model.Id">Delete</a>
+                            </div>
+
+                        </div>

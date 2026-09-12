@@ -1,0 +1,28 @@
+﻿
+@model Product;
+<div class="row justify-content-between gy-4 mt-4">
+
+    <div class="col-lg-8 aos-init aos-animate" data-aos="fade-up">
+
+        <h2>@Model.Name</h2>
+        <p>@Model.Description</p>
+     </div>
+    </div>
+
+<div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100" dir="ltr">
+        <div class="portfolio-info" >
+            <h3>بيانات المنتج </h3>
+            <ul>
+                <li><strong> :القسم</strong> @Model.Cat.Name</li>
+                <li><strong> :البائع</strong> @Model.SupplierName </li>
+                <li><strong> :سعر المنتج</strong> @Model.Price </li>
+
+                <li><strong> :تاريخ المنتج</strong> @Model.EntryDate </li>
+                <li><strong> رابط تقييم العملاء: URL</strong> <a href="#"@Model.ReviewUrl></a></li>
+                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,253 @@
+﻿@model IndexVM
+
+
+
+<div class="container mt-5 mb-5">
+
+    <form asp-action="ProductSearch" asp-controller="Home"  method="get">
+        <div class="row">
+            <input type="submit" class="col-sm-2 btn btn-primary" value="ابحث" />
+
+            <div class="col-sm-10">
+                <input type="text" name="xname" id="xname" style="text-align: right" class="form-control" placeholder="البحث" />
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+<!-- /Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+            <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                <li data-filter="*" class="filter-active">All</li>
+                
+                @foreach (var item in Model.Categories)
+                {
+                    <li data-filter="._@item.Id">@item.Name</li>
+                }
+                
+            </ul><!-- End Portfolio Filters -->
+
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+                @if (Model?.Products != null)
+                {
+                    foreach (var item in Model.Products)
+                    {
+                       <partial name="_ProductParcial" model="@item" />
+                    }
+                }
+               
+
+            </div><!-- End Portfolio Container -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="testimonials" class="testimonials section light-background">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>الاراء</h2>
+        <p>اراء و تقييم عملائنا الذين تشرفنا بتقييم افضل خدمة للتسوق الالكتروني و تصميم الموقع لهم من خلال موقعنا </p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper" data-speed="600" data-delay="5000"  data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+            <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  },
+                  "breakpoints": {
+                    "320": {
+                      "slidesPerView": 1,
+                      "spaceBetween": 40
+                    },
+                    "1200": {
+                      "slidesPerView": 3,
+                      "spaceBetween": 20
+                    }
+                  }
+                }
+            </script>
+            <div class="swiper-wrapper">
+
+                @foreach (var item in Model.Reviews)
+                {
+                    
+               
+
+                <div class="swiper-slide">
+                    <div class="testimonial-item">
+                        <p>
+                            <i class=" bi bi-quote quote-icon-left"></i>
+                                <span class="review-text">@item.Description</span>                            <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                        <img src="~/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                        <h3>@item.Name</h3>
+                        <h4>@item.Subject</h4>
+                    </div>
+                    </div>
+                }
+<!-- End testimonial item -->
+
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="pricing" class="pricing section">
+
+    <!-- Section Title -->
+    <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+        <h2>احدث المنتجات</h2>
+        <p>المنتجات المضافة مؤخرا</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+          
+            @foreach (var item in Model.LatestProducts)
+            {
+                <div class="col-lg-4 aos-init aos-animate"  data-aos="zoom-in" data-aos-delay="200">
+                    <div class="pricing-item featured" >
+                        <h3>@item.Name</h3>
+                        <h4><sup>$</sup>@item.Price<span></span></h4>
+                        <img src="@item.Photo" height="400px" width="300" />
+                       <a href="#" class="buy-btn">Buy Now</a>
+                    </div>
+                </div>
+            
+                <!-- End Pricing Item -->
+            }
+            
+
+           
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>تواصل معنا</h2>
+        <p>تواصل معنا لتقديم مقترحاتك او مراسلاتنا من اجل خدمات الموقع </p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-6">
+
+                <div class="row gy-4">
+                    <div class="col-md-6">
+                        <div class="info-item" data-aos="fade" data-aos-delay="200">
+                            <i class="bi bi-geo-alt"></i>
+                            <h3>العنوان</h3>
+                            <p>فلسطين غزة</p>
+                            <p>غزة النصر</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="col-md-6">
+                        <div class="info-item" data-aos="fade" data-aos-delay="300">
+                            <a href="https://api.whatsapp.com/send?phone=+201550664453" target="_blank">
+                                <i class="bi bi-telephone"></i>
+                            </a>
+                            <h3>اتصل بنا</h3>
+                            <p>+972 5923456</p>
+                            
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="col-md-6">
+                        <div class="info-item" data-aos="fade" data-aos-delay="400">
+                            <a href="mailto:contact@example.com" target="_blank">
+                                <i class="bi bi-envelope"></i>
+                            </a>
+                            <h3>رسالة بريد الكتروني</h3>
+                            <p>contact@example.com</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                   
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6" style="direction:rtl">
+                <form asp-action="SendReview" asp-controller="Home" method="post" class="myform" data-aos="fade-up" data-aos-delay="200">
+                    <div class="row gy-4" >
+
+                        <div class="col-md-6">
+                            <input type="text" name="Name" id="Name" class="form-control" placeholder="اسمك" required="">
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <input type="email" class="form-control" name="Email" id="Email" placeholder="البريد الالكتروني" required="">
+                        </div>
+
+                        <div class="col-12">
+                            <input type="text" class="form-control" name="Subject" id="Subject" placeholder="العنوان" required="">
+                        </div>
+
+                        <div class="col-12">
+                            <textarea class="form-control" name="Description" id="Description" rows="6" placeholder="الرسالة" required=""></textarea>
+                        </div>
+
+                        <div class="col-12 text-center">
+
+                            <input type="submit" class="btn btn-primary" value="ارسال" onclick="alert('تم ارسال الرسالة بنجاح')" />
+                          
+                        </div>
+
+                    </div>
+                </form>
+            </div><!-- End Contact Form -->
+
+        </div>
+
+    </div>
+
+</section><!-- /Contact Section -->
